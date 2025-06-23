@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="logo.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Followers Dzd/ECCP</title>
+  <style>
+
+* { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+      color: white;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+    .form-container {
+      background: rgba(0, 0, 0, 0.9);
+      border-radius: 15px;
+      border: 2px solid #00e5ff;
+      padding: 30px;
+      max-width: 500px;
+      width: 100%;
+      box-shadow: 0 0 15px #00e5ff;
+      text-align: center;
+    }
+    .form-container img.logo {
+      width: 60px;
+      margin-bottom: 10px;
+    }
+    .form-container h2 {
+      color: #0ff;
+      margin-bottom: 20px;
+    }
+    .form-container label {
+      display: block;
+      margin: 15px 0 5px;
+      text-align: right;
+    }
+    .form-container input[type="text"],
+    .form-container input[type="file"] {
+      width: 100%;
+      padding: 10px;
+      border-radius: 8px;
+      border: none;
+      background: #111;
+      color: #0ff;
+    }
+    .file-preview {
+      margin-top: 10px;
+      max-height: 100px;
+    }
+    .custom-file-button {
+      display: inline-block;
+      background: linear-gradient(45deg, #00e5ff, #7c4dff);
+      color: white;
+      padding: 10px 15px;
+      border-radius: 10px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+    .form-container .countdown {
+      margin-top: 15px;
+      color: #ffd700;
+      font-size: 16px;
+    }
+    .form-container button {
+      margin-top: 20px;
+      padding: 12px;
+      width: 100%;
+      border: none;
+      background: linear-gradient(45deg, #00e5ff, #7c4dff);
+      color: white;
+      font-size: 16px;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+    .form-container .spinner {
+      border: 6px solid #f3f3f3;
+      border-top: 6px solid #00e5ff;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      animation: spin 1s linear infinite;
+      margin: 20px auto;
+    }
+    .error-box {
+      display: none;
+      background: rgba(0,0,0,0.95);
+      padding: 30px;
+      border-radius: 15px;
+      border: 2px solid red;
+      text-align: center;
+      box-shadow: 0 0 20px red;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 10001;
+    }
+    .error-box a {
+      color: #00e5ff;
+      display: inline-block;
+      margin: 10px;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+
+
+
+
+
+
+@media (max-width: 768px) {
+  body {
+    padding: 15px;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding-top: 50px;
+  }
+
+  .form-container {
+    width: 100%;
+    max-width: 95%;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 0 10px #00e5ff;
+  }
+
+  .form-container img.logo {
+    width: 50px;
+    margin-bottom: 8px;
+  }
+
+  .form-container h2 {
+    font-size: 20px;
+    margin-bottom: 15px;
+  }
+
+  .form-container label {
+    font-size: 14px;
+    margin: 10px 0 5px;
+    text-align: right;
+  }
+
+  .form-container input[type="text"],
+  .form-container input[type="file"] {
+    font-size: 14px;
+    padding: 8px;
+    border-radius: 8px;
+  }
+
+  .custom-file-button {
+    font-size: 14px;
+    padding: 10px 12px;
+    margin-top: 8px;
+  }
+
+  .file-preview {
+    max-height: 80px;
+    margin-top: 8px;
+  }
+
+  .form-container .countdown {
+    font-size: 14px;
+    margin-top: 12px;
+  }
+
+  .form-container button {
+    font-size: 15px;
+    padding: 10px;
+    margin-top: 18px;
+  }
+
+  .form-container .spinner {
+    width: 40px;
+    height: 40px;
+    border-width: 5px;
+  }
+
+  .error-box {
+    width: 90%;
+    padding: 20px;
+    font-size: 14px;
+  }
+
+  .error-box a {
+    font-size: 14px;
+    margin: 8px;
+  }
+}
+
+  </style>
+</head>
+<body>
+  <div class="form-container">
+    <img src="AlgeriePoste.png" alt="BaridiMob" class="logo">
+    <h2>دفع عبر بريدي موب الجزائر</h2>
+    <p>السعر الإجمالي: <strong id="finalPrice"></strong></p>
+    <p>رقم الحساب للتحويل: <strong>00799999004374909532</strong></p>
+
+    <label for="fullname">اسمك الكامل:</label>
+    <input type="text" id="fullname" placeholder="اكتب اسمك الكامل">
+
+    <label for="ccp">رقم CCP الخاص بك:</label>
+    <input type="text" id="ccp" placeholder="00799999...">
+
+    <label for="proof">إثبات الدفع (صورة jpg أو png فقط):</label>
+    <input type="file" id="proof" accept="image/png, image/jpeg" style="display: none;" onchange="previewImage()">
+    <label class="custom-file-button" for="proof">📷 اختر صورة اثبات الدفع</label>
+    <div class="file-preview" id="preview"></div>
+
+    <div class="countdown">الوقت المتبقي: <span id="countdown">15:00</span></div>
+
+    <button onclick="submitPayment()">✅ تأكيد الدفع</button>
+  </div>
+
+  <div class="form-container" id="loadingPopup" style="display: none;">
+    <h2>⏳ جاري التحقق من الدفع...</h2>
+    <div class="spinner"></div>
+  </div>
+
+  <div class="error-box" id="errorBox">
+    <h3>🚫 عذرًا، هناك مشكلة في الصورة</h3>
+    <p>قد لا يظهر الوقت بشكل واضح أو توجد تلاعبات أو صورة مزورة.</p>
+    <p>يرجى إعادة رفع صورة جديدة واضحة، أو تواصل مع الدعم.</p>
+    <a href="https://facebook.com/YourSupportPage" target="_blank">📘 تواصل عبر فيسبوك</a>
+    <a href="https://instagram.com/YourSupportPage" target="_blank">📸 تواصل عبر إنستغرام</a>
+    <a href="index.html" target="_blank">الصفحة الرئيسية</a>
+  </div>
+
+  <script>
+    window.onload = () => {
+      const quantity = localStorage.getItem("selectedQuantity");
+      const price = localStorage.getItem("selectedPrice");
+
+      if (!quantity || !price) {
+        alert("❌ لا توجد بيانات دفع. يرجى العودة وإعادة المحاولة.");
+        window.location.href = "index.html";
+        return;
+      }
+
+      document.getElementById("finalPrice").textContent = price;
+      startCountdown(15);
+    };
+
+    function startCountdown(minutes) {
+      let time = minutes * 60;
+      const countdownEl = document.getElementById("countdown");
+
+      const interval = setInterval(() => {
+        const min = String(Math.floor(time / 60)).padStart(2, '0');
+        const sec = String(time % 60).padStart(2, '0');
+        countdownEl.textContent = `${min}:${sec}`;
+
+        if (time <= 0) {
+          clearInterval(interval);
+          alert("⏰ انتهى الوقت. يرجى إعادة العملية من البداية.");
+          window.location.href = "index.html";
+        }
+        time--;
+      }, 1000);
+    }
+
+    function previewImage() {
+      const file = document.getElementById("proof").files[0];
+      const preview = document.getElementById("preview");
+      if (file && (file.type === "image/jpeg" || file.type === "image/png")) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          preview.innerHTML = `<img src="${e.target.result}" style="max-height: 100px; border-radius: 10px;">`;
+        };
+        reader.readAsDataURL(file);
+      } else {
+        preview.innerHTML = "<span style='color:red'>❌ نوع الملف غير مسموح</span>";
+      }
+    }
+
+    function submitPayment() {
+      const name = document.getElementById('fullname').value.trim();
+      const ccp = document.getElementById('ccp').value.trim();
+      const proof = document.getElementById('proof').files[0];
+
+      if (!name || !ccp || !proof) {
+        alert('❌ يرجى ملء جميع الحقول وتحميل إثبات الدفع.');
+        return;
+      }
+
+      document.querySelector('.form-container').style.display = 'none';
+      document.getElementById('loadingPopup').style.display = 'block';
+
+      setTimeout(() => {
+        document.getElementById('loadingPopup').style.display = 'none';
+        document.getElementById('errorBox').style.display = 'block';
+      }, 10000);
+    }
+  </script>
+</body>
+</html>

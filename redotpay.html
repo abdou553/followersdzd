@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Followers Dzd / REDOTPAY</title>
+  <link rel="icon" href="logo.png">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+      color: white;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .form-container {
+      background: rgba(0, 0, 0, 0.92);
+      border-radius: 15px;
+      border: 2px solid #00e5ff;
+      padding: 30px;
+      width: 100%;
+      max-width: 500px;
+      box-shadow: 0 0 15px #00e5ff;
+    }
+    .wallet-section {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    .wallet-section p {
+      margin: 8px 0;
+    }
+    .wallet-section img {
+      width: 180px;
+      margin-top: 10px;
+      border-radius: 12px;
+      border: 2px solid #0ff;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .wallet-section img.enlarge {
+      width: 100%;
+      max-width: 400px;
+    }
+    h2 {
+      text-align: center;
+      color: #0ff;
+      margin-bottom: 25px;
+    }
+    label {
+      display: block;
+      margin-top: 15px;
+      margin-bottom: 5px;
+      font-weight: bold;
+      text-align: right;
+    }
+    input {
+      width: 100%;
+      padding: 10px;
+      border-radius: 8px;
+      border: none;
+      background: #111;
+      color: #0ff;
+      font-size: 15px;
+    }
+    button {
+      margin-top: 20px;
+      padding: 12px;
+      width: 100%;
+      border: none;
+      background: linear-gradient(45deg, #00e5ff, #7c4dff);
+      color: white;
+      font-size: 16px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+    button:hover {
+      transform: scale(1.03);
+    }
+    .overlay {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.95);
+      z-index: 9999;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    .spinner {
+      border: 6px solid #eee;
+      border-top: 6px solid #00e5ff;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      animation: spin 1s linear infinite;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    .overlay h3 {
+      color: red;
+      margin-top: 20px;
+    }
+    @media (max-width: 768px) {
+      body {
+        padding: 15px;
+        flex-direction: column;
+        justify-content: flex-start;
+      }
+      .form-container {
+        padding: 20px;
+        border-radius: 12px;
+        box-shadow: 0 0 10px #00e5ff;
+        margin-top: 30px;
+      }
+      .wallet-section img {
+        width: 140px;
+        max-width: 90%;
+        margin-bottom: 10px;
+      }
+    }
+
+	@media (max-width: 768px) {
+  body {
+    padding: 15px;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+
+  .form-container {
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 0 10px #00e5ff;
+    width: 100%;
+    margin-top: 30px;
+  }
+
+  .wallet-section h3 {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+
+  .wallet-section img {
+    width: 140px;
+    max-width: 90%;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    border: 2px solid #0ff;
+    transition: 0.3s;
+  }
+
+  .wallet-section p {
+    font-size: 14px;
+    word-break: break-word;
+  }
+
+  h2 {
+    font-size: 18px;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  label {
+    font-size: 14px;
+    margin-bottom: 4px;
+    display: block;
+    text-align: right;
+  }
+
+  input {
+    font-size: 14px;
+    padding: 10px;
+    border-radius: 8px;
+    background: #111;
+    color: #0ff;
+    width: 100%;
+    border: none;
+    margin-bottom: 15px;
+  }
+
+  button {
+    font-size: 15px;
+    padding: 12px;
+    border-radius: 10px;
+    width: 100%;
+    background: linear-gradient(45deg, #00e5ff, #7c4dff);
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+
+  button:hover {
+    opacity: 0.9;
+  }
+
+  .overlay {
+    padding: 30px 15px;
+    text-align: center;
+  }
+
+  .overlay h3 {
+    font-size: 18px;
+    margin: 20px 0 10px;
+  }
+
+  .overlay p,
+  .overlay a {
+    font-size: 14px;
+    display: block;
+    margin: 5px 0;
+  }
+
+  .wallet-section img.enlarge {
+    width: 100%;
+    max-width: 90%;
+  }
+}
+
+  </style>
+</head>
+<body>
+  <div class="form-container" id="mainForm">
+    <div class="wallet-section">
+      <h3>أرسل المبلغ إلى المحفظة التالية:</h3>
+      <img src="qrredotpay.jpg" alt="QR Code" onclick="enlargeQR()" />
+      <p><strong>USDT (TRC20):</strong></p>
+      <p><b>TBFFCYBM72C8RAumvLghsPpz9NKcQQnJsK</b></p>
+    </div>
+
+    <h2>💳 تأكيد الدفع عبر RedotPay</h2>
+
+    <label>اسم المستخدم:</label>
+    <input type="text" id="username" readonly />
+
+    <label>السعر:</label>
+    <input type="text" id="price" readonly />
+
+    <label>معرف حسابك في RedotPay:</label>
+    <input type="text" id="redotId" placeholder="مثال: 98765432" />
+
+    <button onclick="confirmPayment()">تأكيد الدفع</button>
+  </div>
+
+  <div class="overlay" id="overlay">
+    <div class="spinner"></div>
+    <h3>جاري التحقق من الدفع...</h3>
+  </div>
+
+  <div class="overlay" id="errorBox" style="display: none;">
+    <h3>⚠️ لم نتمكن من تأكيد الدفع</h3>
+    <p>يرجى التأكد من أنك أرسلت المبلغ الصحيح.</p>
+    <p>إذا استمرت المشكلة، يرجى مراسلة الدعم:</p>
+    <a href="https://www.facebook.com/" style="color: #0ff;" target="_blank">فيسبوك</a>
+    <a href="https://www.instagram.com/followers.dzd/" style="color: #0ff;" target="_blank">انستغرام</a>
+    <a href="index.html" style="color: #0ff;">الصفحة الرئيسية</a>
+  </div>
+
+  <script>
+    window.onload = () => {
+      const username = localStorage.getItem("accountLink") || "غير معروف";
+      const price = localStorage.getItem("selectedPrice") || "0 DA";
+      document.getElementById("username").value = username;
+      document.getElementById("price").value = price;
+    };
+
+    function confirmPayment() {
+      const redotId = document.getElementById("redotId").value.trim();
+      if (!redotId) {
+        alert("يرجى إدخال معرف حسابك في RedotPay.");
+        return;
+      }
+
+      document.getElementById("mainForm").style.display = "none";
+      document.getElementById("overlay").style.display = "flex";
+
+      setTimeout(() => {
+        document.getElementById("overlay").style.display = "none";
+        document.getElementById("errorBox").style.display = "flex";
+      }, 10000);
+    }
+
+    function enlargeQR() {
+      const img = document.querySelector(".wallet-section img");
+      img.classList.toggle("enlarge");
+    }
+  </script>
+</body>
+</html>

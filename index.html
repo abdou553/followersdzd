@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Followers Dzd</title>
+  <link rel="icon" href="logo.png">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<!-- Story Overlay -->
+<div class="story-box" id="storyBox">
+  <!-- Progress Bar -->
+  <div class="story-progress-bar" id="storyProgressBar">
+    <div class="progress-segment" id="prog0"></div>
+    <div class="progress-segment" id="prog1"></div>
+    <div class="progress-segment" id="prog2"></div>
+  </div>
+
+  <!-- Story Image -->
+  <img src="" alt="story" class="story-image" id="storyImage" />
+
+  <!-- Navigation Buttons -->
+  <button class="story-prev" onclick="prevStory()">‹</button>
+  <button class="story-next" onclick="nextStory()">›</button>
+
+  <!-- Close Button -->
+  <button class="story-close" onclick="closeStory()">✕</button>
+</div>
+
+
+  <!-- شريط علوي -->
+  <div class="hed">
+<!-- Story Trigger -->
+<div class="logo" onclick="openStory()">
+  <img src="logo.png" alt="logo" />
+  <h3>Followres Dz</h3>
+</div>
+    <div class="btn">
+      <button onclick="showContactPopup()">تواصل معنا</button>
+      <button onclick="window.location.href='whoarewe.html'">من نحن</button>
+      <button  onclick="window.location.href='free.html'">تجربة مجانية </button>
+      <button id="refreshBtn">الرئيسية</button>
+
+
+    </div>
+
+    <!-- لافتة التواصل -->
+<div class="contact-popup" id="contactPopup">
+  <div class="contact-box">
+    <span class="close-btn" onclick="hideContactPopup()">✖</span>
+    <h3>📩 تواصل معنا</h3>
+    <div class="social-buttons">
+      <a href="https://www.instagram.com/followers.dzd" target="_blank"><button>📸 Instagram</button></a>
+      <a href="https://web.facebook.com/profile.php?id=61577303564661" target="_blank"><button>📘 Facebook</button></a>
+    </div>
+  </div>
+</div>
+    <!-- هذا الزر يظهر فقط على الهاتف -->
+<button class="menu-toggle">≡</button>
+  </div>
+<!-- القائمة الجانبية -->
+<div class="side-menu" id="sideMenu">
+  <button class="close-menu">≡</button>
+  <button onclick="refreshPage()">الرئيسية</button>
+  <button onclick="window.location.href='free.html'">تجربة مجانية </button>
+  <button onclick="window.location.href='whoarewe.html'">من نحن</button>
+  <button onclick="showContactPopup()">تواصل معنا</button>
+</div>
+  <!-- قسم الشراء -->
+  <div class="purchase-section">
+    <h2>🚀 اطلب خدمتك الآن</h2>
+
+    <label for="service">اختر الخدمة:</label>
+    <select id="service">
+      <option value="Instagram">متابعين Instagram</option>
+      <option value="TikTok">متابعين TikTok</option>
+      <option value="Facebook">متابعين Facebook</option>
+    </select>
+    
+    <label for="accountLink">رابط حسابك:</label>
+<input type="text" id="accountLink" placeholder="أدخل رابط الحساب (Instagram, TikTok, Facebook)" />
+
+<div id="linkError" style="color: red;"></div>
+
+    <label for="quantity">الكمية:</label>
+    <input type="number" id="quantity" placeholder="أدخل الكمية" min="1" />
+
+    <label for="price">السعر الإجمالي:</label>
+    <input type="text" id="price" readonly value="0 DA" />
+
+    <div id="error"></div>
+
+    <button onclick="validateAndShow()">💸 شراء الآن</button>
+  </div>
+
+  <!-- لافتة الدفع -->
+  <div class="payment-overlay" id="payment">
+    <div class="payment-popup">
+      <h3>اختر طريقة الدفع</h3>
+      <button onclick="goToBaridiMob()">
+        <img src="AlgeriePoste.png" alt="BaridiMob"> BaridiMob
+      </button>
+      
+      <button onclick="goToBinancePage()">
+        <img src="binance.png" alt="Binance"> Binance
+      </button>
+      
+      <button onclick="goToRedotPayPage()">
+        <img src="redotpay.png" alt="RedotPay"> RedotPay
+      </button>
+      
+      <button class="close-bn" onclick="hidePayment()">✖ إغلاق</button>
+    </div>
+  </div>
+
+<script src="script.js"></script>
+</body>
+</html>
