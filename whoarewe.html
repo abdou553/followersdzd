@@ -1,111 +1,188 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Followers Dz من نحن</title>
+  <title>من نحن - Followers Dz</title>
   <link rel="icon" href="logo.png">
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+
   <style>
     body {
       margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
-      color: white;
+      font-family: 'Cairo', sans-serif;
+      background: #303030;
+      color: #ffffff;
       min-height: 100vh;
       padding: 20px;
-      line-height: 1.8;
     }
+
+
+
 
     .container {
       max-width: 900px;
       margin: auto;
-      background: rgba(0, 0, 0, 0.85);
-      padding: 30px;
-      border-radius: 15px;
-      border: 2px solid #00e5ff;
-      box-shadow: 0 0 15px #00e5ff;
+      background: rgb(53, 53, 53);
+      padding: 40px 30px;
+      border-radius: 16px;
+      border: 1px solid #646464;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
     }
 
     h1, h2 {
-      color: #0ff;
+      color: #ffffff;
       text-align: center;
+      margin-bottom: 20px;
     }
 
-	::selection{
-		background-color: #0f2027;
-	}
     p {
-      margin-bottom: 15px;
+      margin-bottom: 18px;
       text-align: justify;
+      font-size: 17px;
+      line-height: 2;
     }
 
     .links {
       margin-top: 30px;
       display: flex;
       justify-content: center;
-      gap: 20px;
+      gap: 15px;
+      flex-wrap: wrap;
     }
 
     .links a {
-      background: linear-gradient(45deg, #00e5ff, #7c4dff);
-      padding: 10px 20px;
+      background: #007aff;
+      padding: 12px 22px;
       color: white;
       text-decoration: none;
       border-radius: 10px;
-      transition: 0.3s;
+      font-weight: bold;
+      font-size: 15px;
+      transition: background 0.3s ease;
     }
 
     .links a:hover {
-      transform: scale(1.05);
+      background: #005fcc;
     }
 
     @media (max-width: 768px) {
       .container {
-        padding: 20px;
+        padding: 25px 20px;
       }
+
+      p {
+        font-size: 16px;
+      }
+
       .links {
         flex-direction: column;
         align-items: center;
+      }
+
+      .links a {
+        width: 100%;
+        text-align: center;
       }
     }
   </style>
 </head>
 <body>
+
+ <!-- 🔔 نافذة الاتصال بالإنترنت -->
+<div class="conxt" id="offlineBanner" style="display: none;">
+  <div class="txt">
+    <div class="wifi-icon">
+      <div class="wave wave1"></div>
+      <div class="wave wave2"></div>
+      <div class="wave wave3"></div>
+      <div class="dot"></div>
+    </div>
+    <h2>🚫 لا يوجد اتصال بالإنترنت</h2>
+    <p>تحقق من الشبكة الخاصة بك ثم أعد المحاولة.</p>
+    <button onclick="retryConnection()">🔄 إعادة المحاولة</button>
+  </div>
+</div>
+
+
   <div class="container">
-    <h1>من نحن - Who Are We</h1>
+    <h1>من نحن - Followers Dz</h1>
+
     <p>
-      مرحبًا بك في <strong>Followers Dz</strong>، المنصة الأولى في الجزائر المتخصصة في تقديم خدمات تعزيز حسابات مواقع التواصل الاجتماعي بشكل احترافي وسريع. هدفنا هو مساعدة الأفراد والشركات على بناء حضور قوي ومميز على المنصات الاجتماعية مثل <strong>Instagram, TikTok, Facebook</strong> والمزيد.
+      نحن <strong>Followers Dz</strong>، منصة رقمية جزائرية متخصصة في تقديم خدمات التواصل الاجتماعي بمصداقية واحترافية. نهدف إلى مساعدة المستخدمين وأصحاب المشاريع الرقمية على بناء وجود قوي على المنصات الاجتماعية المختلفة من خلال توفير حلول فعالة وبأسعار معقولة.
     </p>
 
     <p>
-      Welcome to <strong>Followers Dz</strong>, the leading Algerian platform for boosting your social media presence quickly and professionally. Our goal is to help individuals and businesses grow their audience and increase engagement across platforms like Instagram, TikTok, Facebook, and more.
+      لدينا رؤية واضحة: أن نجعل تعزيز التفاعل والمصداقية على الشبكات الاجتماعية متاحًا وسهلًا للجميع، سواء كنت فردًا يريد زيادة عدد المتابعين أو شركة تتطلع إلى تقوية علامتها التجارية.
     </p>
 
-    <h2>ماذا نقدم؟ | What Do We Offer?</h2>
+    <h2>خدماتنا</h2>
     <p>
-      - خدمات زيادة المتابعين الحقيقية بأسعار تنافسية.<br>
-      - واجهة سهلة الاستخدام لتقديم الطلبات.<br>
-      - دعم فني مباشر لحل مشاكلك بسرعة وفعالية.<br>
-      - تجربة مجانية واحدة كل 24 ساعة للتجربة بدون التزام.
+      ✅ زيادة عدد المتابعين الحقيقيين على إنستغرام، فيسبوك، تيك توك، ويوتيوب.<br>
+      ✅ دعم فني مباشر ومتجاوب لحل أي استفسار أو مشكلة.<br>
+      ✅ لوحة تحكم سهلة الاستخدام لطلب الخدمات بكل سرعة وأمان.<br>
+      ✅ تجربة مجانية للمستخدمين الجدد لتجربة الخدمة بثقة.<br>
+      ✅ خيارات دفع متعددة تناسب جميع المستخدمين داخل وخارج الجزائر.
     </p>
 
+    <h2>لماذا نحن؟</h2>
     <p>
-      - Real followers growth services at competitive prices.<br>
-      - Easy-to-use interface for placing orders.<br>
-      - Dedicated support team to assist you instantly.<br>
-      - One free trial every 24 hours, no commitment.
+      ✔️ نلتزم بالمصداقية والشفافية في جميع تعاملاتنا.<br>
+      ✔️ نستخدم تقنيات حديثة لضمان سرية بيانات العملاء.<br>
+      ✔️ لدينا فريق دعم متخصص يعمل على مدار الساعة.<br>
+      ✔️ سرعة في التنفيذ، ونتائج ملموسة في وقت قصير.
     </p>
 
-    <h2>تواصل معنا | Contact Us</h2>
+    <h2>تواصل معنا</h2>
     <p>
-      لأي استفسار أو طلب خاص، لا تتردد في مراسلتنا عبر صفحاتنا على مواقع التواصل الاجتماعي:
+      يسعدنا أن نكون دائمًا في خدمتك. لأي استفسار أو مساعدة، يرجى التواصل معنا عبر الروابط التالية:
     </p>
 
     <div class="links">
-      <a href="https://web.facebook.com/profile.php?id=61577303564661" target="_blank">Facebook</a>
-      <a href="https://www.instagram.com/followers.dzd/" target="_blank">Instagram</a>
-      <a href="index.html">العودة إلى الصفحة الرئيسية</a>
+      <a href="https://web.facebook.com/profile.php?id=61577303564661" target="_blank">📘 فيسبوك</a>
+      <a href="https://www.instagram.com/followers.dzd/" target="_blank">📸 إنستغرام</a>
+      <a href="index.html">🏠 العودة للرئيسية</a>
     </div>
   </div>
+  <script>
+    const banner = document.getElementById("offlineBanner");
+
+function checkOnlineStatus() {
+  return navigator.onLine;
+}
+
+function showBanner() {
+  banner.style.display = "flex";
+}
+
+function hideBanner() {
+  banner.style.display = "none";
+}
+
+function retryConnection() {
+  if (checkOnlineStatus()) {
+    hideBanner();
+  } else {
+    alert("❗ لا يوجد اتصال بالإنترنت بعد.");
+  }
+}
+
+// 🔄 مراقبة حالة الاتصال
+window.addEventListener('online', () => {
+  hideBanner();
+});
+
+window.addEventListener('offline', () => {
+  showBanner();
+});
+
+// ✅ تحقق عند تحميل الصفحة لأول مرة
+window.addEventListener("load", () => {
+  if (!checkOnlineStatus()) {
+    showBanner();
+  }
+});
+  </script>
 </body>
 </html>

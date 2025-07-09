@@ -6,8 +6,29 @@
   <title>Followers Dzd</title>
   <link rel="icon" href="logo.png">
   <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
 </head>
 <body>
+
+
+<!-- 🔔 نافذة الاتصال بالإنترنت -->
+<div class="conxt" id="offlineBanner" style="display: none;">
+  <div class="txt">
+    <div class="wifi-icon">
+      <div class="wave wave1"></div>
+      <div class="wave wave2"></div>
+      <div class="wave wave3"></div>
+      <div class="dot"></div>
+    </div>
+    <h2>🚫 لا يوجد اتصال بالإنترنت</h2>
+    <p>تحقق من الشبكة الخاصة بك ثم أعد المحاولة.</p>
+    <button onclick="retryConnection()">🔄 إعادة المحاولة</button>
+  </div>
+</div>
+  
+
+
+
 <!-- Story Overlay -->
 <div class="story-box" id="storyBox">
   <!-- Progress Bar -->
@@ -61,7 +82,7 @@
   </div>
 <!-- القائمة الجانبية -->
 <div class="side-menu" id="sideMenu">
-  <button class="close-menu">≡</button>
+  <button class="close-menu">x</button>
   <button onclick="refreshPage()">الرئيسية</button>
   <button onclick="window.location.href='free.html'">تجربة مجانية </button>
   <button onclick="window.location.href='whoarewe.html'">من نحن</button>
@@ -76,6 +97,7 @@
       <option value="Instagram">متابعين Instagram</option>
       <option value="TikTok">متابعين TikTok</option>
       <option value="Facebook">متابعين Facebook</option>
+      <option value="YouTube">متابعين YouTube</option> <!-- ✅ تمت الإضافة -->
     </select>
     
     <label for="accountLink">رابط حسابك:</label>

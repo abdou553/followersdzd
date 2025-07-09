@@ -1,20 +1,21 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Followers Dz Free</title>
   <link rel="icon" href="logo.png">
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-image: url("https://us.123rf.com/450wm/writerfantast/writerfantast1811/writerfantast181100168/112122746-fond-de-maille-d%C3%A9grad%C3%A9-bleu-fonc%C3%A9-lisse-et-flou-vecteur-mod%C3%A8le-de-banni%C3%A8re-de-vecteur-de-couleur.jpg?ver=6");
-      background-size: cover;
-      background-repeat: no-repeat;
-      background-position: center;
-      min-height: 100vh;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
       color: white;
+      min-height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -22,31 +23,33 @@
     }
 
     .form-container {
-      background: rgba(0, 0, 0, 0.85);
+      background: rgba(0, 0, 0, 0.88);
       padding: 30px;
       border-radius: 15px;
       border: 2px solid #00e5ff;
       max-width: 500px;
       width: 100%;
-      box-shadow: 0 0 15px #00e5ff;
+      box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
       text-align: center;
     }
 
     .form-container h2 {
       color: #00e5ff;
       margin-bottom: 20px;
+      font-size: 24px;
     }
 
     .form-container label {
       display: block;
       margin: 15px 0 5px;
       text-align: right;
+      font-weight: 500;
     }
 
     .form-container input[type="text"] {
       width: 100%;
-      padding: 10px;
-      border-radius: 8px;
+      padding: 12px;
+      border-radius: 10px;
       border: none;
       background: #111;
       color: #0ff;
@@ -55,20 +58,26 @@
 
     .form-container button {
       margin-top: 20px;
-      padding: 12px;
+      padding: 14px;
       width: 100%;
       border: none;
       background: linear-gradient(45deg, #00e5ff, #7c4dff);
       color: white;
       font-size: 16px;
+      font-weight: bold;
       border-radius: 10px;
       cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .form-container button:hover {
+      background: linear-gradient(45deg, #7c4dff, #00e5ff);
     }
 
     .message {
       margin-top: 20px;
       font-size: 15px;
-      color: #ffd700;
+      font-weight: 500;
     }
 
     .block-overlay {
@@ -96,6 +105,12 @@
       color: #ccc;
     }
 
+    #timer {
+      font-size: 20px;
+      color: #00e5ff;
+      font-weight: bold;
+    }
+
     @media (max-width: 600px) {
       .form-container {
         padding: 20px;
@@ -106,16 +121,15 @@
 <body>
 
   <div class="form-container" id="mainForm">
-    <h2>🎁 تجربة مجانية</h2>
-    <label for="username">رابط حسابك (Instagram أو TikTok):</label>
-    <input type="text" id="username" placeholder="أدخل رابط الحساب هنا" />
+    <h2>🎁 تجربة مجانية لمتابعين Instagram أو TikTok</h2>
+    <label for="username">رابط حسابك:</label>
+    <input type="text" id="username" placeholder="مثال: https://www.instagram.com/username" />
     <button onclick="submitFreeTrial()">🔍 تقديم الطلب</button>
     <div class="message" id="message"></div>
   </div>
 
-  <!-- لافتة الحظر -->
   <div class="block-overlay" id="blockedBox" style="display: none;">
-    <h2>⚠️ تم استخدام التجربة المجانية</h2>
+    <h2>⚠️ لقد استخدمت التجربة المجانية</h2>
     <p>يرجى المحاولة مرة أخرى بعد:</p>
     <h3 id="timer"></h3>
   </div>
@@ -125,14 +139,13 @@
     const blockedBox = document.getElementById("blockedBox");
     const message = document.getElementById("message");
     const timer = document.getElementById("timer");
-
     const ONE_DAY = 86400000;
 
     function formatTime(ms) {
-      const h = Math.floor(ms / 3600000);
-      const m = Math.floor((ms % 3600000) / 60000);
-      const s = Math.floor((ms % 60000) / 1000);
-      return `${h} : ${m} : ${s}`;
+      const h = Math.floor(ms / 3600000).toString().padStart(2, '0');
+      const m = Math.floor((ms % 3600000) / 60000).toString().padStart(2, '0');
+      const s = Math.floor((ms % 60000) / 1000).toString().padStart(2, '0');
+      return `${h}:${m}:${s}`;
     }
 
     window.onload = () => {
@@ -163,29 +176,32 @@
 
     function submitFreeTrial() {
       const username = document.getElementById("username").value.trim();
+      const isInstagram = username.includes("instagram.com");
+      const isTikTok = username.includes("tiktok.com");
+
       if (!username) {
         message.style.color = "red";
         message.textContent = "❗ الرجاء إدخال رابط الحساب.";
         return;
       }
 
-      // تسجيل وقت الاستخدام
+      if (!isInstagram && !isTikTok) {
+        message.style.color = "red";
+        message.textContent = "❗ يجب أن يكون الرابط لحساب Instagram أو TikTok فقط.";
+        return;
+      }
+
       localStorage.setItem("lastFreeTrial", Date.now().toString());
 
-      // عرض رسالة مؤقتة
       message.style.color = '#00ff99';
-      message.textContent = `✅ تم إرسال الطلب! سيتم تنفيذ التجربة خلال دقائق.`;
-
-      // إفراغ الحقل
+      message.textContent = "✅ تم إرسال الطلب! سيتم تنفيذ التجربة خلال دقائق.";
       document.getElementById("username").value = "";
 
-      // منع المستخدم مجددًا
       setTimeout(() => {
         mainForm.style.display = "none";
         blockedBox.style.display = "flex";
         timer.innerText = formatTime(ONE_DAY);
 
-        // تشغيل المؤقت من جديد
         const newCountdown = setInterval(() => {
           const currentRemain = ONE_DAY - (Date.now() - parseInt(localStorage.getItem("lastFreeTrial")));
           if (currentRemain <= 0) {
@@ -196,7 +212,7 @@
             timer.innerText = formatTime(currentRemain);
           }
         }, 1000);
-      }, 4000); // بعد 4 ثوانٍ
+      }, 4000);
     }
   </script>
 

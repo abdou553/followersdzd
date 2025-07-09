@@ -41,19 +41,23 @@ function validateAndShow() {
     return;
   }
 
-  // تحقق من الرابط حسب الخدمة
+
+  // التحقق من الروابط
   const isInstagram = link.includes("instagram.com");
   const isTikTok = link.includes("tiktok.com");
   const isFacebook = link.includes("facebook.com");
-
+  const isYouTube = link.includes("youtube.com") || link.includes("youtu.be"); // ✅ دعم الرابط المختصر
+  
   if (
     (selectedService.includes("Instagram") && !isInstagram) ||
     (selectedService.includes("TikTok") && !isTikTok) ||
-    (selectedService.includes("Facebook") && !isFacebook)
+    (selectedService.includes("Facebook") && !isFacebook) ||
+    (selectedService.includes("YouTube") && !isYouTube) // ✅ تحقق YouTube
   ) {
     linkError.textContent = "❗ تأكد من أنك وضعت رابطًا صحيحًا يخص الخدمة المختارة.";
     return;
   }
+  
 
   // حفظ البيانات في localStorage
   localStorage.setItem("selectedQuantity", q);
@@ -349,3 +353,64 @@ function goToBaridiMob() {
   function hideContactPopup() {
     document.getElementById("contactPopup").style.display = "none";
   }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ //--------logconict---------//
+
+
+
+
+ const banner = document.getElementById("offlineBanner");
+
+  function checkOnlineStatus() {
+    return navigator.onLine;
+  }
+
+  function showBanner() {
+    banner.style.display = "flex";
+  }
+
+  function hideBanner() {
+    banner.style.display = "none";
+  }
+
+  function retryConnection() {
+    if (checkOnlineStatus()) {
+      hideBanner();
+    } else {
+      alert("❗ لا يوجد اتصال بالإنترنت بعد.");
+    }
+  }
+
+  // 🔄 مراقبة حالة الاتصال
+  window.addEventListener('online', () => {
+    hideBanner();
+  });
+
+  window.addEventListener('offline', () => {
+    showBanner();
+  });
+
+  // ✅ تحقق عند تحميل الصفحة لأول مرة
+  window.addEventListener("load", () => {
+    if (!checkOnlineStatus()) {
+      showBanner();
+    }
+  });

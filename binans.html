@@ -3,212 +3,221 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Followers Dzd/BINANS</title>
+  <title>Followers DZD/Binance</title>
+  <link rel="stylesheet" href="styles.css">
   <link rel="icon" href="logo.png">
   <style>
-    * {
-      box-sizing: border-box;
-    }
+:root {
+  --primary: #38bdf8;
+  --primary-dark: #0ea5e9;
+  --bg: linear-gradient(135deg, #0f172a, #1e293b);
+  --box-bg: rgba(255, 255, 255, 0.04);
+  --border: #38bdf8;
+  --text-main: #ffffff;
+  --text-muted: #94a3b8;
+  --radius: 14px;
+  --font: 'Cairo', 'Segoe UI', sans-serif;
+}
 
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
-      color: white;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-    }
+* {
+  box-sizing: border-box;
+}
 
-    .form-container {
-      background: rgba(0, 0, 0, 0.92);
-      border-radius: 15px;
-      border: 2px solid #00e5ff;
-      padding: 30px;
-      width: 100%;
-      max-width: 500px;
-      box-shadow: 0 0 15px #00e5ff;
-    }
+body {
+  margin: 0;
+  padding: 20px;
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--text-main);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-    .wallet-section {
-      text-align: center;
-      margin-bottom: 30px;
-    }
+.form-container {
+  background: var(--box-bg);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius);
+  padding: 40px 30px;
+  max-width: 500px;
+  width: 100%;
+  box-shadow: 0 0 30px rgba(56, 189, 248, 0.12);
+  backdrop-filter: blur(10px);
+}
 
-    .wallet-section p {
-      margin: 8px 0;
-    }
+.wallet-section {
+  text-align: center;
+  margin-bottom: 30px;
+}
 
-    .wallet-section img {
-      width: 180px;
-      margin-top: 10px;
-      border-radius: 12px;
-      border: 2px solid #0ff;
-      cursor: pointer;
-      transition: 0.3s;
-    }
+.wallet-section h3 {
+  margin-bottom: 10px;
+  font-weight: 600;
+  color: var(--primary);
+}
 
-    .wallet-section img.enlarge {
-      width: 100%;
-      max-width: 400px;
-    }
+.wallet-section img {
+  width: 180px;
+  border-radius: 12px;
+  border: 2px solid var(--primary);
+  cursor: pointer;
+  transition: 0.3s ease;
+}
 
-    h2 {
-      text-align: center;
-      color: #0ff;
-      margin-bottom: 25px;
-    }
+.wallet-section img.enlarge {
+  width: 100%;
+  max-width: 420px;
+}
 
-    label {
-      display: block;
-      margin-top: 15px;
-      margin-bottom: 5px;
-      font-weight: bold;
-      text-align: right;
-    }
+.wallet-section p {
+  margin: 6px 0;
+  font-size: 15px;
+  color: var(--text-muted);
+}
 
-    input {
-      width: 100%;
-      padding: 10px;
-      border-radius: 8px;
-      border: none;
-      background: #111;
-      color: #0ff;
-      font-size: 15px;
-    }
+h2 {
+  text-align: center;
+  color: var(--primary);
+  margin-bottom: 25px;
+}
 
-    button {
-      margin-top: 20px;
-      padding: 12px;
-      width: 100%;
-      border: none;
-      background: linear-gradient(45deg, #00e5ff, #7c4dff);
-      color: white;
-      font-size: 16px;
-      border-radius: 10px;
-      cursor: pointer;
-      transition: transform 0.2s;
-    }
+label {
+  display: block;
+  margin: 15px 0 6px;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--text-main);
+  text-align: right;
+}
 
-    button:hover {
-      transform: scale(1.03);
-    }
+input {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  border: none;
+  background: #111;
+  color: var(--primary);
+  font-size: 15px;
+  transition: 0.2s;
+}
 
-    .overlay {
-      display: none;
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.95);
-      z-index: 9999;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      color: white;
-      padding: 20px;
-      text-align: center;
-    }
+input:focus {
+  outline: 2px solid var(--primary);
+  background-color: #181818;
+}
 
-    .spinner {
-      border: 6px solid #eee;
-      border-top: 6px solid #00e5ff;
-      border-radius: 50%;
-      width: 50px;
-      height: 50px;
-      animation: spin 1s linear infinite;
-    }
+button {
+  margin-top: 20px;
+  padding: 14px;
+  width: 100%;
+  border: none;
+  border-radius: var(--radius);
+  background: linear-gradient(45deg, var(--primary), var(--primary-dark));
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(56, 189, 248, 0.3);
+  transition: 0.3s ease;
+}
 
-    @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
+button:hover {
+  transform: scale(1.03);
+  background: linear-gradient(45deg, var(--primary-dark), var(--primary));
+}
 
-    .overlay h3 {
-      color: red;
-      margin-top: 20px;
-    }
+.overlay {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(15, 23, 42, 0.95);
+  z-index: 9999;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
 
-    @media (max-width: 600px) {
-      .wallet-section img {
-        width: 140px;
-      }
-    }
+.spinner {
+  border: 6px solid #ccc;
+  border-top: 6px solid var(--primary);
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+}
 
+@keyframes spin {
+  0% { transform: rotate(0deg);}
+  100% { transform: rotate(360deg);}
+}
 
-    @media (max-width: 768px) {
-  body {
-    padding: 15px;
-    flex-direction: column;
-    justify-content: flex-start;
-  }
+.overlay h3 {
+  color: red;
+  margin-top: 20px;
+}
 
+.overlay a {
+  display: block;
+  margin-top: 10px;
+  color: var(--primary);
+  text-decoration: underline;
+  font-weight: 500;
+}
+
+@media (max-width: 600px) {
   .form-container {
     padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 0 10px #00e5ff;
-    width: 100%;
-    margin-top: 30px;
-  }
-
-  .wallet-section h3 {
-    font-size: 16px;
-    margin-bottom: 10px;
   }
 
   .wallet-section img {
-    width: 140px;
-    max-width: 90%;
-    margin-bottom: 10px;
-  }
-
-  .wallet-section p {
-    font-size: 14px;
-    word-break: break-all;
+    width: 150px;
   }
 
   h2 {
-    font-size: 18px;
-    margin-bottom: 20px;
+    font-size: 20px;
   }
 
   label {
     font-size: 14px;
-    margin-bottom: 4px;
   }
 
-  input {
+  input, button {
     font-size: 14px;
     padding: 10px;
-    border-radius: 8px;
   }
 
-  button {
-    font-size: 15px;
-    padding: 10px;
-    margin-top: 15px;
-  }
-
-  .overlay h3 {
-    font-size: 18px;
-  }
-
-  .overlay p,
-  .overlay a {
-    font-size: 14px;
-  }
-
-  .wallet-section img.enlarge {
-    width: 100%;
-    max-width: 90%;
+  .spinner {
+    width: 40px;
+    height: 40px;
   }
 }
 
   </style>
 </head>
 <body>
+
+
+  <!-- 🔔 نافذة الاتصال بالإنترنت -->
+<div class="conxt" id="offlineBanner" style="display: none;">
+  <div class="txt">
+    <div class="wifi-icon">
+      <div class="wave wave1"></div>
+      <div class="wave wave2"></div>
+      <div class="wave wave3"></div>
+      <div class="dot"></div>
+    </div>
+    <h2>🚫 لا يوجد اتصال بالإنترنت</h2>
+    <p>تحقق من الشبكة الخاصة بك ثم أعد المحاولة.</p>
+    <button onclick="retryConnection()">🔄 إعادة المحاولة</button>
+  </div>
+</div>
+
 
   <div class="form-container" id="mainForm">
     <div class="wallet-section">
@@ -279,6 +288,47 @@
       img.classList.toggle("enlarge");
     }
   </script>
+
+
+<script>
+  const banner = document.getElementById("offlineBanner");
+
+function checkOnlineStatus() {
+  return navigator.onLine;
+}
+
+function showBanner() {
+  banner.style.display = "flex";
+}
+
+function hideBanner() {
+  banner.style.display = "none";
+}
+
+function retryConnection() {
+  if (checkOnlineStatus()) {
+    hideBanner();
+  } else {
+    alert("❗ لا يوجد اتصال بالإنترنت بعد.");
+  }
+}
+
+// 🔄 مراقبة حالة الاتصال
+window.addEventListener('online', () => {
+  hideBanner();
+});
+
+window.addEventListener('offline', () => {
+  showBanner();
+});
+
+// ✅ تحقق عند تحميل الصفحة لأول مرة
+window.addEventListener("load", () => {
+  if (!checkOnlineStatus()) {
+    showBanner();
+  }
+});
+</script>
 
 </body>
 </html>
